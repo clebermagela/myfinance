@@ -1,0 +1,56 @@
+﻿@using myfinance_web_dotnet.Domain
+@{
+    ViewData["Title"] = "Plano de Conta";
+}
+
+<h1 class="bd-title" id="content">@ViewData["Title"]</h1>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" asp-controller="PlanoConta" asp-action="Cadastro">Criar item de Plano de Conta</a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">#</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach ( var item in (List<PlanoConta>)ViewBag.Lista)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Nome</td>
+                                <td>@item.Tipo</td>
+                                <td><button type="button" class="btn btn-warning" onclick="Editar(@item.Id)">Editar</button></td>
+                                <td><button type="button" class="btn btn-danger" onclick="Excluir(@item.Id)">Excluir</button></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function Editar(id) {
+        window.location.href = "/PlanoConta/Cadastro/" + id;
+    }
+
+    function Excluir(id) {
+        window.location.href = "/PlanoConta/Excluir/" + id;
+    }
+</script>

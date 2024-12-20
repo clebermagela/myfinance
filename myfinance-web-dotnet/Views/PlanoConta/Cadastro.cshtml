@@ -1,0 +1,38 @@
+﻿@model PlanoContaModel
+@{
+    ViewData["Title"] = "Cadastro de Plano de Contas";
+}
+
+<h1 class="bd-title" id="content">@ViewData["Title"]</h1>
+
+<div class="container mt-3">
+    <div class="row">
+        <form class="row g-3" asp-controller="PlanoConta" asp-action="Cadastro" method="post">
+            <div class="mb-3 col-4">
+                <label for="txtNome" class="form-label">Descrição</label>
+                <input type="hidden" id="txtId" asp-for="Id" >
+                <input type="text" class="form-control" id="txtNome" asp-for="Nome">
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-auto">
+                     <label class="form-check-label" for="flexRadioDefault1">@Html.RadioButtonFor(m => m.Tipo, "D", "checked") Despesa</label>
+                </div>
+                <div class="col-auto">
+                     <label class="form-check-label" for="flexRadioDefault1">@Html.RadioButtonFor(m => m.Tipo, "R", "") Receita</label>
+                </div>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary btn-lg" type="submit">Salvar</button>
+                <button class="btn btn-secondary btn-lg" type="button" onclick="Voltar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function Voltar() {
+        window.location.href = "/PlanoConta/Index";
+    }
+</script>
