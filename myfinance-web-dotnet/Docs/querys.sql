@@ -20,9 +20,24 @@ create table TRANSACAO(
 	foreign key(planocontaid) references PLANOCONTA(id)
 );
 
+
+--Exame especial
+CREATE TABLE Pessoa (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Nome NVARCHAR(100) NOT NULL
+);
+
+ALTER TABLE Transacao
+ADD IdPessoa INT NOT NULL;
+
+ALTER TABLE Transacao
+ADD CONSTRAINT FK_Transacao_Pessoa FOREIGN KEY (IdPessoa) REFERENCES Pessoa(Id);
+
+
+
 insert into PLANOCONTA(nome, tipo) values ('Combustível','D');
 insert into PLANOCONTA(nome, tipo) values ('Alimentação','D');
-insert into PLANOCONTA(nome, tipo) values ('Aluguel','D');
+insert into PLANOCONTA(nome, tipo) values ('Aluguel','D'); 
 insert into PLANOCONTA(nome, tipo) values ('Água','D');
 insert into PLANOCONTA(nome, tipo) values ('Luz','D');
 insert into PLANOCONTA(nome, tipo) values ('Internet','D');

@@ -1,0 +1,10 @@
+﻿<div class="form-group">
+    <label for="IdPessoa">Responsável pela Transação</label>
+    <select id="IdPessoa" name="IdPessoa" class="form-control" required>
+        <option value="">Selecione</option>
+        @foreach (var pessoa in ViewBag.Pessoas)
+        {
+            <option value="@pessoa.Id">@pessoa.Nome</option>
+        }
+    </select>
+</div>

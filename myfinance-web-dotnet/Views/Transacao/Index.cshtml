@@ -1,0 +1,25 @@
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Histórico</th>
+            <th>Data</th>
+            <th>Plano de Contas</th>
+            <th>Valor</th>
+            <th>Responsável</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transacao in Model)
+        {
+            <tr>
+                <td>@transacao.Id</td>
+                <td>@transacao.Historico</td>
+                <td>@transacao.Data.ToString("dd/MM/yyyy")</td>
+                <td>@transacao.PlanoConta?.Descricao</td>
+                <td>@transacao.Valor.ToString("C")</td>
+                <td>@transacao.Pessoa?.Nome</td>
+            </tr>
+        }
+    </tbody>
+</table>

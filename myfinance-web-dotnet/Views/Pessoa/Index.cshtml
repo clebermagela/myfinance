@@ -1,0 +1,22 @@
+﻿@model IEnumerable<myfinance_web_dotnet.Domain.Pessoa>
+
+<h1>Lista de Pessoas</h1>
+<a href="/Pessoa/Create" class="btn btn-primary">Adicionar Pessoa</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pessoa in Model)
+        {
+            <tr>
+                <td>@pessoa.Id</td>
+                <td>@pessoa.Nome</td>
+            </tr>
+        }
+    </tbody>
+</table>
